@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Patient>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница пациентов</title>
+</head>
+<body>
+    <table border="1">
+        <caption>пациент</caption>
+        <tr>
+            <td>Id</td>
+            <td>Имя пациента</td>
+            <td>Фамилия пациента</td>
+            <td>Отчество пациента</td>
+            <td>Возраст пациента</td>
+            <td>Пол пациента</td>
+            <td>Телефон пациента</td>
+            <td>Дата госпитализации</td>
+            <td>Дата выписки</td>
+            <td>Диагноз</td>
+            <td>Отделение</td>
+            <td>Рез</td>
+            <td></td>
+        </tr>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.PatientId</td>
+                <td>@patient.Name</td>
+                <td>@patient.Surname</td>
+                <td>@patient.Lastname</td>
+                <td>@patient.Age</td>
+                <td>@patient.Gender</td>
+                <td>@patient.DateHospitalisation</td>
+                <td>@patient.DateDischarge</td>
+                <td>@patient.Diagnos</td>
+                <td>@patient.ResultTreatment</td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

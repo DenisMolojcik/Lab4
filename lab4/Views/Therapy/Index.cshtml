@@ -1,0 +1,56 @@
+﻿@model IEnumerable<lab4.ViewsModels.TherapyView>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница терапии</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <p>Введите имя доктора: </p>
+        @Html.TextBox("searchDoctorName", "Имя доктора")
+        <p>Введите название медикаментов :</p>
+        @Html.TextBox("searchMedicianName", "Название медикаментов")
+        <p><input type="submit" value="Отправить" /></p>
+    }
+    <table border="1">
+        <caption>Терапии</caption>
+        <tr>
+            <td>Id</td>
+            <th>
+                <a asp-action="Index" asp-route-sortTherapy="@ViewBag.DiseaseName">
+                    Болезнь
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortTherapy="@ViewBag.MedicianName">
+                    Медикаменты
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortTherapy="@ViewBag.DoctorName">
+                    Имя доктора
+                </a>
+            </th>
+            <td>Имя пациента</td>
+            <td>Дата</td>
+            <td></td>
+        </tr>
+        @foreach (var therapy in Model)
+        {
+            <tr>
+                <td>@therapy.Id</td>
+                <td>@therapy.DiseaseName</td>
+                <td>@therapy.MedicianName</td>
+                <td>@therapy.DoctorName</td>
+                <td>@therapy.PatientName</td>
+                <td>@therapy.Date</td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>
